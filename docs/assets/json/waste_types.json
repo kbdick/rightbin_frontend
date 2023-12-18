@@ -1,0 +1,14 @@
+[
+      {
+        "name": "Recycling",
+        "icon": "./assets/img/recycling_icon.png"
+      },
+      {
+        "name": "Compost",
+        "icon": "./assets/img/compost_icon.png"
+      },
+      {
+        "name": "Landfill",
+        "icon": "./assets/img/landfill_icon.png"
+      }
+    ]

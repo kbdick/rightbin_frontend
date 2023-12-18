@@ -1,0 +1,26 @@
+[
+      {
+        "name": "Bag",
+        "icon": "./assets/img/bag_icon.png"
+      },
+      {
+        "name": "Lg Compost Bin",
+        "icon": "./assets/img/large_compost_bin_icon.png"
+      },
+      {
+        "name": "Sm Compost Bin",
+        "icon": "./assets/img/compost_bin_icon.png"
+      },
+      {
+        "name": "Round Bin",
+        "icon": "./assets/img/round_bin_icon.png"
+      },
+      {
+        "name": "Lg Gondola",
+        "icon": "./assets/img/small_gondola_icon.png"
+      },
+      {
+        "name": "Sm Gondola",
+        "icon": "./assets/img/small_gondola_icon.png"
+      }
+    ]
