@@ -1,0 +1,25 @@
+#title {
+    color: white;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar {
+    border-bottom: #01579B solid 1px !important;
+    padding-top: 1rem;
+}
+
+.offline-notification {
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px;
+  margin: 0;
+  background-color: rgb(255, 100, 100);
+
+  p {
+    margin: 0;
+  }
+}

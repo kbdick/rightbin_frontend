@@ -1,0 +1,23 @@
+<!--Web USB request for Chrome from https://stackoverflow.com/questions/56801187/possible-to-use-nodejs-in-the-browser-with-webusb-->
+
+<html>
+<body>
+    <button id="usb">Connect to a USB Device</button>
+    <script>
+        /* global navigator */
+        
+        document.getElementById('usb').addEventListener('click',function(){
+            if (navigator.usb) {
+                navigator.usb.requestDevice({
+                    filters: []
+                })
+                .then(function(device){
+                    document.body.innerHTML +=
+                        device.manufacturerName + ', ' +
+                        device.productName;
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<div class="mat-elevation-z8 last-input">
+<ul *ngIf="lastCollect">
+    <li>
+        <b>Location:</b> {{lastCollect.location_name}}
+    </li>
+    <li>
+        <b>Waste Type:</b> {{lastCollect.waste_type}}
+    </li>
+    <li>
+        <b>Who Collected:</b> {{lastCollect.retriever_name}}
+    </li>
+    <li>
+        <b>Net Weight:</b> {{lastCollect.net_weight}}
+    </li>
+    <li>
+        <b>Container:</b> {{lastCollect.container_name}}
+    </li>
+    <li>
+        <b>Tare:</b> {{lastCollect.tare_weight}}
+    </li>
+    <li>
+        <b>Scale:</b> {{lastCollect.scale_weight}}
+    </li>
+    <li>
+        <b>Time Collected:</b> {{lastCollect.weighed_at | date:'short' }}
+    </li>
+    <li>
+        <b>ID:</b> {{lastCollect.id }}
+    </li>
+</ul>
+</div>

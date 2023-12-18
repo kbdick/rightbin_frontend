@@ -1,0 +1,13 @@
+<table matSort class="mat-elevation-z8">
+<tr class="trend-th">
+  <th>Snapshot</th>
+  <th>Monthly</th>
+  <th>Yearly</th>
+</tr>
+<tr *ngFor="let user of users | async">
+  <td class="trend-td" [ngStyle]="{'color': setDiversionColor(user.diversion_rate_daily_average)}">{{ user.diversion_rate_daily_average | percent }}</td>
+  <td class="trend-td" [ngStyle]="{'color': setDiversionColor(user.diversion_rate_monthly_average)}">{{user.diversion_rate_monthly_average | percent }}</td>
+  <td class="trend-td" [ngStyle]="{'color': setDiversionColor(user.diversion_rate_yearly_average)}">{{user.diversion_rate_yearly_average | percent }}</td>
+</tr>
+<!--[ngStyle]="{'color': setDiversionColor(users.diversion_rate_yearly_average)}-->
+</table>

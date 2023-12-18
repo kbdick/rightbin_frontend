@@ -1,0 +1,32 @@
+
+        <h3 mat-dialog-title>Last Input</h3>
+
+    <mat-dialog-content>
+      <div *ngIf="lastCollect">
+        <div>
+        Collected For: <b>{{lastCollect.location_name}}</b>
+        </div>
+        <div>
+        Waste Collected: <b>{{lastCollect.waste_type}}</b>
+        </div>
+        <div>
+        Net Weight Collected: <b>{{lastCollect.net_weight}}</b> lbs
+        </div>
+        <div>
+        Collected By: <b>{{lastCollect.collector_name}}</b>
+        </div>
+        <div>
+        Container used: <b>{{lastCollect.container_name}}</b>
+        </div>
+        <div>
+        Tare Weight: <b>{{lastCollect.tare_weight}}</b> lbs
+        </div>
+        <div>
+        Scale Weight: <b>{{lastCollect.scale_weight}}</b> lbs
+        </div>
+      </div>
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+      <button mat-raised-button matDialogClose>Close <mat-icon><mat-progress-spinner class="padding" color="primary" mode="indeterminate" diameter="20"></mat-progress-spinner></mat-icon></button>
+    </mat-dialog-actions>

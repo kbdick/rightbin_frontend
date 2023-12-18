@@ -1,0 +1,28 @@
+<div fxLayoutAlign="center center" *ngIf="!(userService.currentUser | async )">
+
+            <app-email-login></app-email-login>
+
+</div>
+
+<div fxLayoutAlign="center center" *ngIf="userService.currentUser | async as user">
+
+    <mat-card>
+
+        <mat-card-header>
+            <mat-card-title>
+                Signed in as <strong>{{ user.email }}</strong>
+            </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+            Connect a scale to collect waste, compost, and recycling weights and locations by choosing <strong>Record Data</strong>.
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button mat-stroked-button routerLink="/collect_form">Record Data</button>
+            <button mat-stroked-button (click)="userService.signOut()">Sign Out</button>
+        </mat-card-actions>
+
+    </mat-card>
+
+</div>

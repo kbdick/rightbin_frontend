@@ -1,0 +1,62 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+// TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
+//  The following line adds:
+//    1. Default typography styles for all components
+//    2. Styles for typography hierarchy classes (e.g. .mat-headline-1)
+//  If you specify typography styles for the components you use elsewhere, you should delete this line.
+//  If you don't need the default component typographies but still want the hierarchy styles,
+//  you can delete this line and instead use:
+//    `@include mat.legacy-typography-hierarchy(mat.define-legacy-typography-config());`
+@include mat.all-legacy-component-typographies();
+@include mat.legacy-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$recycle-tracker-primary: mat.define-palette(mat.$blue-palette, 200, 100, 500);
+$recycle-tracker-accent: mat.define-palette(mat.$green-palette, 400, 100, 700);
+
+// The warn palette is optional (defaults to red).
+$recycle-tracker-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$recycle-tracker-theme: mat.define-light-theme((
+  color: (
+    primary: $recycle-tracker-primary,
+    accent: $recycle-tracker-accent,
+    warn: $recycle-tracker-warn,
+  )
+));
+
+@include mat.legacy-core-theme($recycle-tracker-theme);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+//@include mat.all-component-themes($recycle-tracker-theme);
+@include mat.legacy-autocomplete-theme($recycle-tracker-theme);
+@include mat.legacy-button-theme($recycle-tracker-theme);
+@include mat.button-toggle-theme($recycle-tracker-theme);
+@include mat.legacy-card-theme($recycle-tracker-theme);
+@include mat.legacy-dialog-theme($recycle-tracker-theme);
+@include mat.divider-theme($recycle-tracker-theme);
+@include mat.legacy-form-field-theme($recycle-tracker-theme);
+@include mat.grid-list-theme($recycle-tracker-theme);
+@include mat.icon-theme($recycle-tracker-theme);
+@include mat.legacy-input-theme($recycle-tracker-theme);
+@include mat.legacy-list-theme($recycle-tracker-theme);
+@include mat.legacy-menu-theme($recycle-tracker-theme);
+@include mat.legacy-progress-spinner-theme($recycle-tracker-theme);
+@include mat.sidenav-theme($recycle-tracker-theme);
+@include mat.legacy-snack-bar-theme($recycle-tracker-theme);
+@include mat.legacy-table-theme($recycle-tracker-theme);
+@include mat.legacy-tabs-theme($recycle-tracker-theme);
+@include mat.toolbar-theme($recycle-tracker-theme);

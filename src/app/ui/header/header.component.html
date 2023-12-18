@@ -1,0 +1,29 @@
+<mat-toolbar color="primary"><img src="./assets/img/rightbin_logo_text.png" width="200px" height="auto">
+<span class="spacer"></span>
+
+<button mat-flat-button color="accent" [matMenuTriggerFor]="menu">Track</button>
+  <mat-menu #menu="matMenu">
+    <a routerLink="collect_form" mat-menu-item>Collect Form</a>
+    <button mat-menu-item disabled>Report</button>
+  </mat-menu>
+
+<div *ngIf="userService.currentUser | async as user; then authenticated else guest">
+        <!-- template will replace this div -->
+</div>
+
+<ng-template #guest>
+  <button mat-stroked-button><a routerLink="login">Sign In</a></button>
+</ng-template>
+
+
+<ng-template #authenticated>
+  <button mat-button (click)="signOut()">Sign Out</button>
+</ng-template>
+
+</mat-toolbar>
+
+<div *ngIf="networkService.isOffline$ | async">
+  <div class="offline-notification">
+    <p>RecycleTracker has lost its network connection. Any collections you record will be uploaded once the application is back online.</p>
+  </div>
+</div>

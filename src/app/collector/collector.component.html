@@ -1,0 +1,168 @@
+  <form *ngIf="collectForm" [formGroup]="collectForm" (ngSubmit)="onSubmit()" #collectNgForm="ngForm">
+    <mat-grid-list cols="4" rowHeight="3:1">
+      <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <mat-grid-tile-header>
+          Locations
+        </mat-grid-tile-header>
+        <mat-form-field appearance="standard">
+          <mat-label>Enter Location</mat-label>
+          <input
+          tabindex="1"
+          class="input"
+          type="text"
+          #collect_location
+          panelWidth="2rem"
+          matInput
+          [matAutocomplete]="location_auto"
+          formControlName="collect_location"
+          [ngClass]="{ 'is-success' : collectForm.get('collect_location').valid && collectForm.get('collect_location').dirty, 'is-danger' : !collectForm.get('collect_location').valid }"
+          aria-label="Location">
+            <mat-autocomplete #location_auto="matAutocomplete" panelWidth="25%">
+              <mat-option *ngFor="let collect_location of filteredCollectLocations$ | async" [value]="collect_location.name">
+                <img class="example-option-img" aria-hidden [src]="collect_location.logo" height="10">
+                <span>{{ collect_location.name }}</span> |
+                <small>Floor: {{ collect_location.floor }} | </small>
+                <small>Suite: {{ collect_location.suite }}</small>
+              </mat-option>
+            </mat-autocomplete>
+            <mat-error [hidden]="collectForm.get('collect_location').valid" align="end">Location is required and must be from the list.</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="2" [rowspan]="2">
+        <mat-grid-tile-header>
+          Scale Weight
+        </mat-grid-tile-header>
+        <mat-form-field appearance="standard" class="number-field">
+          <h1 class="scale_input">
+            <input
+            matInput
+            #scale
+            class="input"
+            type="number"
+            formControlName="scale_weight"
+            [ngClass]="{ 'is-success' : collectForm.get('scale_weight').valid && collectForm.get('scale_weight').dirty, 'is-danger' : !collectForm.get('scale_weight').valid }"
+            aria-label="Scale Weight">
+          </h1>
+          <mat-error [hidden]="collectForm.get('scale_weight').valid" align="end">The scale weight must be zero or greater. Add tare to the tare weight field.</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <mat-grid-tile-header>
+          Waste Type
+        </mat-grid-tile-header>
+          <mat-form-field appearance="standard">
+            <mat-label>Enter Waste Type</mat-label>
+            <input
+            matInput
+            tabindex="2"
+            #waste_type
+            [matAutocomplete]="waste_type_auto"
+            class="input"
+            type="text"
+            formControlName="waste_type"
+            [ngClass]="{'is-success' : collectForm.get('waste_type').valid && collectForm.get('waste_type').dirty, 'is-danger' : !collectForm.get('waste_type').valid }"
+            aria-label="Waste Type">
+              <mat-autocomplete #waste_type_auto="matAutocomplete" panelWidth="30%">
+                <mat-option *ngFor="let waste_type of filteredWaste_Types$ | async" [value]="waste_type.waste_type_name">
+                  <img class="example-option-img" aria-hidden [src]="waste_type.waste_type_icon" height="25">
+                  <span>{{ waste_type.waste_type_name }}</span>
+                </mat-option>
+              </mat-autocomplete>
+              <mat-error [hidden]="collectForm.get('waste_type').valid" align="end">Waste type is required and must be from the list.</mat-error>
+          </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <mat-grid-tile-header>
+          Collected By
+        </mat-grid-tile-header>
+          <mat-form-field appearance="standard">
+            <mat-label>Enter Collector Name</mat-label>
+            <input
+            tabindex="3"
+            class="input"
+            type="text"
+            #collector
+            panelWidth="2rem"
+            matInput
+            [matAutocomplete]="collector_auto"
+            formControlName="collector"
+            [ngClass]="{'is-success' : collectForm.get('collector').valid && collectForm.get('collector').dirty, 'is-danger' : !collectForm.get('collector').valid }"
+            aria-label="Collector">
+              <mat-autocomplete #collector_auto="matAutocomplete" panelWidth="25%">
+                <mat-option *ngFor="let collector of filteredCollectors$ | async" [value]="collector.name">
+                  <img class="example-option-img" aria-hidden [src]="collector.icon" height="10">
+                  <span>{{ collector.name }}</span>
+                </mat-option>
+              </mat-autocomplete>
+              <mat-error [hidden]="collectForm.get('collector').valid" align="end">The person inputting the data is required</mat-error>
+          </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="2" [rowspan]="2">
+        <mat-grid-tile-header>
+          Net Weight
+        </mat-grid-tile-header>
+        <mat-form-field appearance="standard" class="number-field">
+          <h1 class="net-weight">
+            <input
+            #net_weight
+            matInput
+            class="input"
+            type="number"
+            formControlName="net_weight"
+            [ngClass]="{ 'is-success' : collectForm.get('net_weight').valid && collectForm.get('net_weight').dirty, 'is-danger' : !collectForm.get('net_weight').valid }">
+          </h1>
+            <mat-error [hidden]="collectForm.get('net_weight').valid" align="end">Net weight should be equal to the scale weight minus the tare weight.</mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <mat-grid-tile-header>
+          Tare
+        </mat-grid-tile-header>
+            <mat-form-field appearance="standard">
+              <mat-label>Enter Container</mat-label>
+              <input
+              tabindex="4"
+              class="input"
+              type="text"
+              #container
+              [matAutocomplete]="tare_auto"
+              formControlName="container"
+              matInput
+              [ngClass]="{'is-success' : collectForm.get('container').valid && collectForm.get('container').dirty, 'is-danger' : !collectForm.get('container').valid }"
+              aria-label="Container">
+                <mat-autocomplete #tare_auto="matAutocomplete" panelWidth="15%">
+                  <mat-option *ngFor="let container of filteredContainers$ | async" [value]="container.name">
+                    <img class="example-option-img" aria-hidden [src]="container.icon" height="25">
+                    <span>{{ container.name }}</span>
+                  </mat-option>
+                </mat-autocomplete>
+                <mat-error [hidden]="collectForm.get('container').valid" align="end">Tare container is required and must be from the list.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="standard" class="number-field">
+              <input
+              #tare_weight
+              matInput
+              class="input"
+              type="number"
+              formControlName="tare_weight"
+              [ngClass]="{'is-success' : collectForm.get('tare_weight').valid && collectForm.get('tare_weight').dirty, 'is-danger' : !collectForm.get('tare_weight').valid }"
+              aria-label="Tare Weight">
+                <mat-error [hidden]="collectForm.get('tare_weight').valid" align="end">Tare weight is required.</mat-error>
+            </mat-form-field>
+            <span class="label">{{ getScaleUnit() }}</span>
+      </mat-grid-tile>
+
+    </mat-grid-list>
+
+    <div class="buttons-content">
+      <button tabindex="5" mat-flat-button color="accent" type="button" (click)="onSubmit(); collect_location.focus();" [disabled]="collectForm.invalid">Submit</button>
+      <button mat-button type="reset" (click)="collectForm.reset(); collect_location.focus();">Reset</button>
+    </div>
+
+  </form>

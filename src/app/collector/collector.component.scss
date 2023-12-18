@@ -1,0 +1,42 @@
+.mat-grid-tile-header {
+    border-bottom: #66BB6A solid 2px !important;
+    background: #AAA !important;
+    color: #303030 !important;
+    font-size: 2em;
+}
+
+.mat-form-field {
+    margin-top: 1rem;
+    min-width: 280px;
+}
+
+.scale_input {
+    font-size: 4em;
+    color: #303030;
+    min-width: 250px;
+}
+
+.net-weight {
+    font-size: 6em;
+    color: #66BB6A;
+    min-width: 300px;
+}
+
+.number-field {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.label {
+    margin-top: .25rem;
+}
+
+.example-option-img {
+    padding-right: 2rem;
+}
+
+.buttons-content {
+    margin-top: 2rem;
+}
